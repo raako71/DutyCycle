@@ -1,0 +1,15 @@
+
+[Unit]
+Description=Python script to run Smart Switch
+After=multi-user.target
+
+
+[Service]
+WorkingDirectory=/home/user/
+User=harry
+ExecStart=/usr/bin/python3 /home/user/SmartSwitchSchedule.py
+Restart=always
+StartLimitInterval=30
+
+[Install]
+WantedBy=multi-user.target
