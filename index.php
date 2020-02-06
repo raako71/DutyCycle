@@ -13,6 +13,7 @@
 		.bottomBox {width: 80px; line-height: 30px; height: 30px; margin: auto}
 		input[type=text] { width: 50px;}
 	    	.success {background: #f3ff3c; padding: 2px;opacity:1; height: 50px;transition:height 3s, opacity 0.4s;}
+	    	.success2 {opacity:1; height: 34px; transition: opacity 1s, height 3s;}
     </style>
 	<?php
 	$strJsonFileContents = file_get_contents("/home/user/data.json");
@@ -111,6 +112,8 @@ $(document).ready(setTimeout(hide, 3000));
 function hide(){
 	$('.success').css('opacity', '0');
 	$('.success').css('height', '0');
+	$('.success2').css('opacity', '0');
+	$('.success2').css('height', '0');
 };
 </script>
 
