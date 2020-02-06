@@ -12,6 +12,7 @@
 		.topBox { border-style: solid;border-width: 2px;}
 		.bottomBox {width: 80px; line-height: 30px; height: 30px; margin: auto}
 		input[type=text] { width: 50px;}
+	    	.success {background: #f3ff3c; padding: 2px;opacity:1;transition:opacity 1s linear;}
     </style>
 	<?php
 	$strJsonFileContents = file_get_contents("/home/user/data.json");
@@ -21,6 +22,7 @@
 	
 		$put = 0;
 		$result = "empty";
+		$success = 0;
 		if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			$runTime = test_input($_POST["runTime"]);
 			$period = test_input($_POST["period"]);
@@ -85,6 +87,7 @@
         <p>Run for <input type='text' value='<?php echo $array[runTime] ?>' name='runTime'>  minutes</p> 
 		<p>Sleep for <?php echo "<input type='text' value='$array[period]' name='period'/>"; ?> minutes</p> 
         <p>Active  <input type='checkbox' <?php if($array[active] == 1) echo "checked";?> value='true' name='active'/> </p>
+		<?php if ($_SERVER["REQUEST_METHOD"] == "POST") echo '<div class="success"> <p>Updated</p> </div>' ; ?>
 		<p><input type="submit" value="Submit"></p>
 		</div>
 		<div class="bottomBox" style="background-color: #0eff58">
@@ -103,6 +106,11 @@ $(".button").click(function() {
     $('.post').attr("value",link);
     $('.redirect').submit();
 });
+$(document).ready(setTimeout(hide, 3000));
+
+function hide(){
+	$('.success').css('opacity', '0');
+};
 </script>
 
 </body>
