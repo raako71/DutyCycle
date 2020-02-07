@@ -10,9 +10,21 @@ try:
 except NameError:
     to_unicode = str
     
-urlOff = 'https://maker.ifttt.com/trigger/SwitchOff/with/key/***'
-urlOn = 'https://maker.ifttt.com/trigger/SwitchOn/with/key/***'
+urlOff = 'https://maker.ifttt.com/trigger/SwitchOff/with/key/d5_jvfkApoLzxKo5ni69sb'
+urlOn = 'https://maker.ifttt.com/trigger/SwitchOn/with/key/d5_jvfkApoLzxKo5ni69sb'
+ 
+#var = {
+#  "period": 30,
+#  "runTime": 2,
+#  "active": True,
+#}
 
+# Write JSON file
+#with io.open('data.json', 'w', encoding='utf8') as outfile:
+#    str_ = json.dumps(var,
+#                      indent=4, sort_keys=True,
+#                     separators=(',', ': '), ensure_ascii=False)
+#   outfile.write(to_unicode(str_))
 
 global period  
 period = 0
@@ -21,11 +33,13 @@ def job():
     with open('data.json') as data_file:
         data_loaded = json.load(data_file)
     global period 
-    print(period)    
+    # print(period)  
     if int(data_loaded['period']) != period:
         period = int(data_loaded['period'])
         sys.exit()
         #close the script
+    data_loaded['nextRun'] = int(time.time())+ 60*int(data_loaded['runTime']) + 60*int(data_loaded['period'])
+    json.dump(data_loaded, open('data.json',"w"))
     if data_loaded['active'] == False:
         #print("off")
         return 1
@@ -46,8 +60,18 @@ def job1():
         data_loaded = json.load(data_file)
     global period  
     period = int(data_loaded['period'])
-    print(period)
+    # print(period)
     
+#print(var == data_loaded)
+#print(data_loaded)
+#print(var['period'])
+
+#s = requests.post(urlOn)
+#print("On = ", s)
+#time.sleep(60*data_loaded['runTime'])
+#s = requests.post(urlOff)
+#print("Off = ", s)
+
 job1()   
 job()
 
