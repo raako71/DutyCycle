@@ -10,8 +10,8 @@ try:
 except NameError:
     to_unicode = str
     
-urlOff = 'https://maker.ifttt.com/trigger/SwitchOff/with/key/d5_jvfkApoLzxKo5ni69sb'
-urlOn = 'https://maker.ifttt.com/trigger/SwitchOn/with/key/d5_jvfkApoLzxKo5ni69sb'
+urlOff = 'https://maker.ifttt.com/trigger/SwitchOff/with/key/***'
+urlOn = 'https://maker.ifttt.com/trigger/SwitchOn/with/key/***'
  
 #var = {
 #  "period": 30,
